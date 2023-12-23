@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/user/layout/default_layout}" lang="ko">
+
+<div layout:fragment="content" class="content">
+
+    <style>
+
+        .sort_type span {
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 6rem;
+            display: inline-block;
+            /*border: 2px solid #ddd;*/
+            text-align: center;
+            height: 32px;
+            line-height: 28px;
+            font-size: 14px;
+            margin-bottom: 3px;
+            color: black;
+            font-weight: lighter;
+        }
+
+        .sort_type span.active {
+            /*edited hun*/
+            /*border-color: #525151;*/
+            color: black;
+            font-weight: bold;
+            /*color: #fff;*/
+        }
+
+        .tags a.active {
+            color: white;
+            background-color: #001c63;
+        }
+
+        /*mobile*/
+        @media (max-width: 767px) {
+            #search-menu div[class^="col-"] {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+    <div class="breadcrumb_section bg_gray page-title-mini">
+        <div class="container"><!-- STRART CONTAINER -->
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-title">
+                        <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
+                        <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
+                            company of used vehicles and auto parts. </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb justify-content-md-end">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">SERVICES</li>
+                        <li class="breadcrumb-item active">DEALERSHIPS</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- END CONTAINER-->
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row mb-3" id="blank-space">
+                        <br/>
+
+                    </div>
+                    <a target="_blank" th:href="@{http://www.encar.com/index.do}">
+                        <img class="img-fluid"
+                             th:src="@{data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAABkCAMAAACYXt08AAAAvVBMVEX////mDy3/eAD6zdPuW2/uU2nxdYboGzfpIz/qLUf1mKXpKEP83OD5wMj+8PLziZj71dr//Pn3sLrvYnb/+PH/9/j95+rnFTL/fwz/4MP/pFPygJD/lzn/hxz/mkD/5c3/7+D/yJf/rmb/t3b/jCX/kC3/0aj/wIj/2bb/xZD/qVz/69n/u37/gxP/8+j/zaDrP1fsSWD1n6vrNk/4t8D/oU3wbH71mqf/rWPxdof/s27/1a/6xs3zhpX4usP8tH5XAAAIw0lEQVR4nOVb6WKySgxV1IrWqigq4l4WUXHBrXvf/7HuDGuGVf0EpPf8aJEJkMMkmSSjudwdoIjze9wmixhT1FfaOqSEEUUN09YhHUwoiuLTViIdzBD117SVSBCr94V1uETUt2nqkiimPKKrmB+G6Hgu8ENJOv2RaMespkFDMofYWqGN1T9gcCK3CLokO2AX/IjiJr5jzKdOVNRHV+rI4C3NVkyOSVTJ+4Pt86LBxzd4sWN9yr8QTUYQzflerpLW8u5gVipv2e9IYP0kTnjsE8+vapt6P2k9747JQrLcllennmFmqzA5GY/qVBlsGkMc5EZJK3pfMLJg8ZaGr6uZ4hVRKUpmkFFwU+PzdCyzOQVdME5U0ztj8m4b7+eqP1kQrsuYho8cW8a521De9jfW4Bwsc9kDIw8pG+KEnbrGP9cy/odNHR0szEiwNBwcp7Hme1ipvtHBwTR8OHGw6poCzL3rE1640ULGSOb8rvjTcqHIS0rFo2ilk3SprUSdNp6LTWymkxyzyT0UdUYeWaTFE+LIeUX6RgjXZxs6Ao9fCPqLXb2/5Ki1Xza7+erLS3X6KTPsZhoPhVthhbbxdvu5BcH6dMK8mC/1fflqmLTuFFPnys1IX9PQ6fEML+/v5JQzymwrqOMRsoX5dD5LiM41EHTiS2WF1q2ZE6wVff5nKKMbfw71440u6NDbrqkRdo5X0/VdS/tW9yLxayIsAr0gZWyQkZ/MhFV1Ejhs3f0htVYZvTKTjEhOUXYkwMmsXqxMdI6wQ7WY82uOWlLDhbp86Ipu7uSgn0YIx8DU15SoD73rtqCHhLUpyZ4cuhuJGtqr23SyMGPH5jVLuS02fnOa9JgmbazTQxzrxnYkWCHfXtvuOzVL1clWOBmZ4IgTlCwRN3oOpmNi6iPzGJm6iAL5eoL/Y7DIxoekB7PSSM+JkKHPldXKv+R7YOAYbq68c8cAcjjwI9oyizI9/USf4lS4QjPymNNnW/h6rJX7cvBOZ1UA5RhOacY40o0psxOxtad8Jqz6J7RAjrml8KiR/BIMnTi2hGu43pSZ4DSOTPVYZWwkQ6fMb0GMnBrsRKzhkzEnu4UZ5d1IgDlhmpB+MQJRUc1DRJ2DU+xyYdYseERuuc1cSPMBw9nLOt5LWgeIsX11bFS4yz7DZGsNCwKkLgbuJSlWtcN/Zb0JCYAM3momS749SUZReT2yjeZowhPVLWaItq/jWkV1D09OelwbScr2T9HGEJ16XHAMwAAzN/rOfJ/JaNYSChGs5YoEG25TFdf1HCrq/9x8GxDJ4tMCO0FpLXfiM5+3hGDoR70voMAvCou/aOYOeM9XBJgtrr5FIfu7KxFQXdQZGeez3CP21e6NGUGdmen9ltcsF2QXYwuor3jcmVYz1my5GYxEncxDvIkq+uw4/llsJCvCyyLvqcg+niJxTFjhOyI0YclH4zcpRRNGNPPyH831LqDeTlvFuBBNPcOuHo5oe++krWJc+P/aezT1VtoaxoYo5r162hrGhijqpbQVjA9R1PdpKxgfAMtj3Qdp6xcjAPWXtHVJGAlT7zxQlnAF9U7TRNc6U98Xd3S+R+/a1VrUgwo/xV2ljB5TPpQGrW6AVPfYOJd2h+fKTiue3wp+L6rQMmE+slstVXp5+tDeX+mdV1AvuKJ+rV0GV+/CAuJLm3aFz8Og6RbqtM4Vl1RP86YVRWtQT7a6bUe6PLiYNsYt1PXctjPoufTcFYIu1PJ+2BG0mueyr9RzI4g6jT40iIsqsVPHkk33BOE58s384Ly4cLAfWSsFCuU10pls6vnvuusq91uKgfpH7tttwIHcaz7vyKvrOUQoXyY0c6i3Dy6565z9JuqHltvYLe6eaPfi+44s2P7eCpPK0/C2xUCxp6uY30Y9GO689xjwjgw4vlkPlctXwHwGU49cZWKl7mps1ELnPA8icoivYwAvDqR+bblxb+pFeAWzCxf+dkTfwiVpZ4UPpH5tSgYuPTd8AIzIS/1Z01yRhmzqDFyDu0bru/C7/9AM834Gol3iJl5jcQKomzrd/mntqwPtcCXzyMoNvEo3dU2ftHqV1BO0rrukA7ed11hvYQM/Q0UMAzmc99840+t0WyRFJ4SR5yt7611fnSLfTJ22vbpOZCzAfz8IeZc9Nktkg/8HGQWZDhOLw86f+tM/1AS3Ut+BLLwOl27H2esw06p4w++RULvQ9iSDL/B6P+rlf+qe3UhdI9SGOjrT0wBne0FJbiggS7+T1VtuauM26rTLzkAkd6IN9IPbmj0g0XkY6u46YeAz1AFBbpe7CeCJD0v96AzZK9YvuMvVPtnp1gqtxiMavJs6GLKpA0voXR6Hm/tzyWhpkHhY6jUf6qBW1S7TpdPS/Gv2rFEHUe6i7kn9I5B37NT3TR8AU72SOkhxL4nvrfBKJ17qV5Qvl1AHVC6Ick+hxDNGHZhv9BZ9FPNsUQfZbaTB76OYZ4s6CHNR7cKuJ8CVd8VzY59YNndn6kDFYi4cRImXrzwdzdoIFPGZog6arOVcKDowuGugdZNV6tB/w796B1Neon2RVergXEQ61wgSTKx8uTN1GOLDp70dJJfVMEes1XTQ1ioGIEPWOcAcskX9G9w7r4VsCjk9+B5xvgPsJlvUiTZN/uBqztU/7IgG1gKij1UFl8dLvUz7w7LVq6kT054vN4A1d/HusPUyAEW4g9KCiU4KRSvCzdTdu0n0+Rffq/vSMOzB+iIm6PHk29b7qZF701mj7rflBqfSnHZir7F83h+P+yfPrk7GqOd+wzdQrWkP3V3PKHUiUvmg6bnz36Hu2XEkYU17ZLmeRepknPbACvL+XzTKO/6SReq+XziyZO3OVd1315wu2NdmknquU332J16Faeub1zpKXaeSzyZ1TN4z872iu1dZJ4V6xRf4zBiol6JhZd9d51d/P667gKGAnnvtrWQv8rQ2OPrux9TezlqF7tEHbdAyn/ozMOD0uKptGxn6BV6n3u3W63H+bu4/v9y0Pqkuf7sAAAAASUVORK5CYII=}"/>
+                    </a>
+                    <!--이미지 출처 : http://www.encar.com/mocha.do?WT.hit=index_gnb-->
+                    <br>
+                    <br>
+                    <div class="row" id="text-space">
+                        구매 방법 설명란, 사진에 하이퍼링크
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <br/>
+                    <a target="_blank" th:href="@{https://www.kbchachacha.com/}">
+                        <img class="img-fluid" th:src="@{https://www.kbchachacha.com/assets/images/common/bi.png}"/>
+                    </a>
+                    <!--이미지 출처 : https://www.kbchachacha.com/-->
+                    <br>
+                    <br>
+                    <div class="row" id="text-space">
+                        구매 방법 설명란
+                    </div>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <br/>
+                    <a target="_blank" th:href="@{https://m-company.kcar.com/}">
+                        <img class="img-fluid"
+                             th:src="@{data:image/png;base64,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}"/>
+                    </a>
+                    <!--이미지 출처 : https://m-company.kcar.com/ci/company/main-->
+                    <br>
+                    <br>
+                    <div class="row" id="text-space">
+                        구매 방법 설명란
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <h5 class="widget_title">SERVICES</h5>
+                            <div class="tags" style="display:grid">
+                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
+                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
+                                <!--                                    COMPANY PROFILE-->
+                                <!--                                </a>-->
+                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
+                                <!--                                    BUSINESS-->
+                                <!--                                </a>-->
+                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
+                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
+                                   th:href="@{/daily-auction}">
+                                    DAILY AUCTION
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/weekly-auction}">
+                                    WEEKLY AUCTION
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/dealerships}">
+                                    DEALERSHIPS
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/stocks}">
+                                    STOCKS
+                                </a>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('.tags a').click(function () {
+                                            $('.tags a').removeClass('active');
+                                            $(this).addClass('active');
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

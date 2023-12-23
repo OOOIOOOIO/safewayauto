@@ -1,0 +1,370 @@
+.recent_feed_category {
+    color: #111111;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.recent_feed_title {
+    word-break: keep-all;
+}
+
+.recent_feed_subtitle {
+    word-break: keep-all;
+}
+
+.navbar-button {
+    border: 1px solid darkgray;
+    float: right;
+    margin: 13px 0 0 3px;
+    /* font-size: 28px; */
+    color: #333;
+    transition: all 0.5s ease 0s;
+    border-radius: 0;
+    height: 35px;
+    width: 90px;
+    padding: 0;
+    line-height: 36px;
+}
+
+.btn-gray {
+    background: darkgray;
+    color: whitesmoke;
+}
+
+/*.navbar-login-btn:hover a {
+    color: white;
+}*/
+
+
+.btn-fill-dark {
+    background-color: black !important;
+}
+
+/*
+body{
+    position: absolute !important;
+    overflow-y: scroll !important;
+}*/
+
+.footer_sns li {
+    display: inline-block;
+    list-style: none;
+    color: white;
+    width: 2rem;
+    margin-left: 0.8rem;
+}
+
+.intro_section {
+    padding: 80px 0;
+    background-color: lightgray;
+    color: black;
+    text-align-last: center;
+}
+
+.intro_section .title {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.intro_section .subtitle {
+    font-size: 1rem;
+    font-weight: 250;
+}
+
+.section .title {
+    color: black;
+    font-size: 1.88rem;
+    font-weight: 390;
+}
+
+.section .subtitle {
+    color: black;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.sns-login div {
+    /*padding: 10px*/
+}
+
+.sns-login img {
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.shop_list_side {
+    background-color: white;
+}
+
+
+#naverMap img {
+    max-width: none;
+    height: auto;
+    border: 0
+}
+
+.btn-shiftBtn {
+    background-color: rgb(0, 25, 91);;
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin: 0 0.5rem 0.5rem 0;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-optionBtn {
+    background-color: rgb(0, 25, 91, 0.8);
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin: 0 0.5rem 0.5rem 0;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+
+/*START 피드 목록 카드뷰*/
+
+.img-container43 {
+    position: relative;
+    height: 0;
+    padding-top: 75%; /* 4:3 ratio */
+}
+
+.img-container43 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-card,
+.card {
+    background-color: rgba(243, 243, 243, 0.62);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-more {
+    border-radius: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: none !important;
+}
+
+@media (min-width: 950px) {
+    .card-group {
+        display: flex;
+    }
+
+    .card {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .card:last-of-type {
+        margin-right: 0;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+/*END 피드 목록 카드뷰*/
+
+
+/*START 메인 최근 피드 목록 카드뷰*/
+.main-card:first-child img {
+    border-radius: 10px 10px 0 0;
+}
+
+.main-card:not(:first-child) img {
+    border-radius: 10px 0px 0px 10px;
+}
+
+@media (min-width: 1250px) {
+    .main-card-split .img-container43 {
+        padding-top: 100% !important;
+    }
+}
+
+@media (max-width: 1250px) {
+    .main-card-group {
+        flex-direction: column;
+    }
+
+    .main-card img {
+        width: 100%;
+        margin-bottom: 1rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .product_info {
+        padding-left: 20px;
+    }
+
+    .main-card-group .col-6 {
+        width: 100% !important;
+    }
+
+    .img-container43 {
+        padding-top: 60%;
+    }
+}
+
+/*END 메인 최근 피드 목록 카드뷰*/
+
+
+.mobile-show {
+    display: none;
+}
+
+@media screen and (max-width: 990px) {
+    .mobile-show {
+        display: block;
+    }
+
+    .mobile-full {
+        width: 100% !important;
+    }
+}
+
+
+.pc-show {
+    display: none;
+}
+
+@media screen and (min-width: 991px) {
+    .pc-show {
+        display: block;
+    }
+}
+
+
+/*정사각형 이미지*/
+.square-image {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 100%;
+}
+
+.square-image img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
+}
+
+/* 끝 */
+
+
+.hover-big:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    transition: all .2s ease-in-out;
+}
+
+.hover-small:hover {
+    transform: scale(0.95);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    transition: all .2s ease-in-out;
+}
+
+
+.circle-top {
+    border-radius: 10px 10px 0 0 !important;
+}
+
+
+.hover-right-top {
+    position: absolute;
+    top: 1em;
+    background-color: #f8f9fa;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #212529;
+    z-index: 99;
+
+}
+
+/*카드뷰 길이 일정하게 만들기*/
+div.card .card-body[data-same-height='true'] .card-title {
+    margin-bottom: 0.5rem;
+    max-height: 2.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+/*카드뷰 길이 일정하게 만들기*/
+div.card .card-body[data-same-height='true'] .card-text {
+    margin-bottom: 0.5rem;
+    max-height: 2.3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+
+.recent_feed_subtitle {
+    max-height: 3em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.mh-2 {
+    max-height: 2em !important;
+}
+
+/*카드뷰 길이 일정하게 만들기 끝*/
+
+
+.navbar-login-btn a:hover {
+    color: white !important;
+}
+
+.navbar-login-btn:hover a {
+    color: white !important;
+}
+
+.btn-hover-white:hover {
+    color: white !important;
+}
+
+.note-btn.dropdown-toggle:after {
+    content: none;
+}
+
+button[data-bs-original-title="Full Screen"] {
+    display: none;
+}

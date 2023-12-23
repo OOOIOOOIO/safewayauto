@@ -1,0 +1,74 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--/* 이곳에 각 view가 위치합니다. */-->
+
+<script th:src="@{/user/assets/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/user/assets/js/interest-tag.js}"></script>
+<script th:src="@{/valid.js}"></script>
+
+<head th:replace="~{/user/fragments/head :: headFragment}"></head>
+
+<th:block layout:fragment="script"></th:block>
+<th:block layout:fragment="css"></th:block>
+
+<body>
+<!--	<th:block layout:fragment="css"></th:block>-->
+<!--	<th:block layout:fragment="script"></th:block>-->
+
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css"/>
+
+
+<!-- LOADER -->
+<div class="preloader" th:if="${disableLoading != true}">
+	<div class="lds-ellipsis">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<!-- END LOADER -->
+
+<div th:if="${enablePopup != null}" th:replace="~{/user/fragments/popup :: popup}"></div>
+
+<div th:replace="~{/user/fragments/header :: headerFragment}"></div>
+
+
+<div layout:fragment="content"></div>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- popper min js -->
+<script th:src="@{/user/assets/js/popper.min.js}"></script>
+<!-- Latest compiled and minified Bootstrap -->
+<script th:src="@{/user/assets/bootstrap/js/bootstrap.min.js}"></script>
+<!-- owl-carousel min js  -->
+<script th:src="@{/user/assets/owlcarousel/js/owl.carousel.min.js}"></script>
+<!-- magnific-popup min js  -->
+<script th:src="@{/user/assets/js/magnific-popup.min.js}"></script>
+<!-- waypoints min js  -->
+<script th:src="@{/user/assets/js/waypoints.min.js}"></script>
+<!-- parallax js  -->
+<script th:src="@{/user/assets/js/parallax.js}"></script>
+<!-- countdown js  -->
+<script th:src="@{/user/assets/js/jquery.countdown.min.js}"></script>
+<!-- imagesloaded js -->
+<script th:src="@{/user/assets/js/imagesloaded.pkgd.min.js}"></script>
+<!-- isotope min js -->
+<script th:src="@{/user/assets/js/isotope.min.js}"></script>
+<!-- jquery.dd.min js -->
+<script th:src="@{/user/assets/js/jquery.dd.min.js}"></script>
+<!-- slick js -->
+<script th:src="@{/user/assets/js/slick.min.js}"></script>
+<!-- elevatezoom js -->
+<script th:src="@{/user/assets/js/jquery.elevatezoom.js}"></script>
+<!-- scripts js -->
+<script th:src="@{/user/assets/js/scripts.js}"></script>
+<script th:src="@{/user/assets/js/toastr.min.js}"></script>
+<script th:src="@{/user/assets/js/jquery-loading.js}"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script th:src="@{/user/assets/js/global-tooltip.js}"></script>
+</body>
+
+<footer th:replace="~{/user/fragments/footer :: footerFragment}"></footer>
+</html>

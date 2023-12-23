@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/user/layout/mypage_layout}" lang="ko">
+
+<div layout:fragment="content" class="content">
+
+	<style>
+        .btn-card-header {
+            border-radius: 0.3rem;
+            font-weight: bold;
+            border: none;
+        }
+	</style>
+	<div class="card">
+		<div class="card-header">
+			문의글 작성
+			<!--			<button type="button" class="btn-gray btn-card-header float-end" href="/mypage/qna"></button>-->
+		</div>
+		<div class="card-body">
+			<!--			문의 유형-->
+			<!--			<label for="type">문의 유형</label>-->
+			<form onsubmit="return makeQna()">
+
+				<select class="form-select" id="questionType" name="questionType" required>
+					<option value="">문의 유형</option>
+					<option value="회원가입 및 로그인">회원가입 및 로그인</option>
+					<option value="편집샵 및 지역 요청">편집샵 및 지역 요청</option>
+					<option value="컨텐츠 관련 문의">컨텐츠 관련 문의</option>
+					<option value="상품 관련">상품 관련</option>
+					<option value="홈페이지 관련">홈페이지 관련</option>
+				</select>
+
+				<!--			문의 제목-->
+				<div class="form-floating mt-3">
+					<input type="text" class="form-control" id="questionTitle" name="questionTitle" placeholder="문의 제목"
+					       required>
+					<label for="questionTitle">문의 제목</label>
+				</div>
+
+				<!--			문의 내용-->
+				<div class="form-floating mt-3">
+				<textarea class="form-control" placeholder="문의 내용" id="questionDescription" name="questionDescription"
+				          style="height: 20rem" required></textarea>
+					<label for="questionDescription">문의 내용</label>
+				</div>
+
+				<!--			button-->
+				<div class="mt-3">
+					<button class="form-control btn btn-shiftBtn" type="button" onclick="return makeQna();">문의하기
+					</button>
+				</div>
+			</form>
+
+			<script>
+                function makeQna() {
+                    // form data
+                    let data = new FormData($('form')[0]);
+
+                    $.ajax({
+                        url: "/mypage/qna/write.do",
+                        type: "POST",
+                        data: data,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            alert("문의글이 등록되었습니다.");
+                            location.href = "/mypage/qna-list";
+                        },
+                        error: function (error) {
+                            alert("문의글 등록에 실패했습니다.");
+                        }
+                    });
+                    return false;
+                }
+			</script>
+
+		</div>
+	</div>
+</div>
+</html>

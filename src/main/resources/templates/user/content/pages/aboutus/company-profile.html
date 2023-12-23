@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/user/layout/default_layout}" lang="ko">
+
+<div layout:fragment="content" class="content">
+
+    <style>
+
+        .sort_type span {
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 6rem;
+            display: inline-block;
+            /*border: 2px solid #ddd;*/
+            text-align: center;
+            height: 32px;
+            line-height: 28px;
+            font-size: 14px;
+            margin-bottom: 3px;
+            color: black;
+            font-weight: lighter;
+        }
+
+        .sort_type span.active {
+            /*edited hun*/
+            /*border-color: #525151;*/
+            color: black;
+            font-weight: bold;
+            /*color: #fff;*/
+        }
+
+        .tags a.active {
+            color: white;
+            background-color: #001c63;
+        }
+
+        /*mobile*/
+        @media (max-width: 767px) {
+            #search-menu div[class^="col-"] {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+    <div class="breadcrumb_section bg_gray page-title-mini">
+        <div class="container"><!-- STRART CONTAINER -->
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-title">
+                        <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
+                        <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
+                            company of used vehicles and auto parts. </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb justify-content-md-end">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">ABOUT US</li>
+                        <li class="breadcrumb-item active">COMPANY PROFILE</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- END CONTAINER-->
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row mb-3" id="blank-space">
+                        <br/>
+
+                    </div>
+                    <div class="row">
+                        <img class="img-fluid" th:src="@{/user/assets/image/bhc.jpeg}"/>
+                    </div>
+                    <div class="row" id="text-space">
+                        AJ International Traders is an export oriented company of used vehicles and auto parts. We are
+                        offering car purchase solution to used car exporters and customers around the globe to buy cars
+                        at ease.
+                        <br/>
+                        <img class="img-fluid" th:src="@{/user/assets/image/bhc.jpeg}"/>
+
+
+                        <br/>
+                        Since our establishment in 2010, our business has been experiencing 100% sales growth each year.
+                        In 2012, we were proud to be a recipient of President Award for exporting 10 million dollars
+                        worth goods overseas. In 2015, we have exported 2500 units to 21 countries with $20 million
+                        dollars sales revenue.
+                        <br/>
+                        <img class="img-fluid" th:src="@{/user/assets/image/bhc.jpeg}"/>
+                        <br/>
+                        Along with AJ Rentacar and AJ Sellcar, AJ International Traders is a subsidiary company of AJ
+                        Family Corporation. For your guidance, AJ Rentacar is one of leading rentacar business in Korea
+                        with 632 billion dollars sales revenue in 2015. AJ Sellcar owns the biggest auto auction in
+                        Korea and has purchasing departments across Korea. Therefore, we are able to source big volumes
+                        of rent cars and personal cars that have undergone proper maintenance and strict inspection
+                        through our networks.
+                        <br/>
+                        <img class="img-fluid" th:src="@{/user/assets/image/bhc.jpeg}"/>
+                        <br/>
+                        The advantage of doing business with AJ International Traders is that we offer 100% transparent
+                        accident history for all of our vehicles at domestic market price. Through our “Auction”
+                        service, we encourage overseas buyers to find their favorite vehicles and to participate in
+                        bidding with their desired price. Also, we offer “All Inclusive Concierge Service” where we
+                        assist buyers step by step from helping buyers to find their favorite vehicles and to deliver
+                        their vehicles to their designated countries.
+                        <br/>
+                        <img class="img-fluid" th:src="@{/user/assets/image/bhc.jpeg}"/>
+                        <br/>
+                        Under our slogan “What You See is What You Get”, we are endlessly pursuing R&D to make 100%
+                        transparent transaction with overseas buyers and to build stronger trust between both parties
+                        for our mutual benefits.
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <h5 class="widget_title">ABOUT US</h5>
+                            <div class="tags" style="display:grid">
+                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
+                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
+                                <!--                                    COMPANY PROFILE-->
+                                <!--                                </a>-->
+                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
+                                <!--                                    BUSINESS-->
+                                <!--                                </a>-->
+                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
+                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
+                                   th:href="@{/company-profile}">
+                                    COMPANY PROFILE
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}" th:href="@{/business}">
+                                    BUSINESS
+                                </a>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('.tags a').click(function () {
+                                            $('.tags a').removeClass('active');
+                                            $(this).addClass('active');
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

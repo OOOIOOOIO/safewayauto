@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/user/layout/default_layout}" lang="ko">
+
+<div layout:fragment="content" class="content">
+
+    <style>
+
+        .sort_type span {
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 6rem;
+            display: inline-block;
+            /*border: 2px solid #ddd;*/
+            text-align: center;
+            height: 32px;
+            line-height: 28px;
+            font-size: 14px;
+            margin-bottom: 3px;
+            color: black;
+            font-weight: lighter;
+        }
+
+        .sort_type span.active {
+            /*edited hun*/
+            /*border-color: #525151;*/
+            color: black;
+            font-weight: bold;
+            /*color: #fff;*/
+        }
+
+        .tags a.active {
+            color: white;
+            background-color: #001c63;
+        }
+
+        /*mobile*/
+        @media (max-width: 767px) {
+            #search-menu div[class^="col-"] {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+    <div class="breadcrumb_section bg_gray page-title-mini">
+        <div class="container"><!-- STRART CONTAINER -->
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-title">
+                        <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
+                        <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
+                            company of used vehicles and auto parts. </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb justify-content-md-end">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active">SERVICES</li>
+                        <li class="breadcrumb-item active">STOCKS</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- END CONTAINER-->
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row mb-3" id="blank-space">
+                        <br/>
+
+                    </div>
+                    <div class="row" id="text-space">
+                        <H1>여기는 BUSINESS 추가되면 수정</H1>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
+                    <div class="sidebar">
+                        <div class="widget">
+                            <h5 class="widget_title">SERVICES</h5>
+                            <div class="tags" style="display:grid">
+                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
+                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
+                                <!--                                    COMPANY PROFILE-->
+                                <!--                                </a>-->
+                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
+                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
+                                <!--                                    BUSINESS-->
+                                <!--                                </a>-->
+                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
+                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
+                                   th:href="@{/daily-auction}">
+                                    DAILY AUCTION
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/weekly-auction}">
+                                    WEEKLY AUCTION
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/dealerships}">
+                                    DEALERSHIPS
+                                </a>
+                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                   th:href="@{/stocks}">
+                                    STOCKS
+                                </a>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('.tags a').click(function () {
+                                            $('.tags a').removeClass('active');
+                                            $(this).addClass('active');
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</html>

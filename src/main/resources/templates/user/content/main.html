@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/user/layout/default_layout}"
+      lang="ko">
+
+<div layout:fragment="content" class="content">
+    <style>
+        /*mobile*/
+        @media (max-width: 767px) {
+            .product_info {
+                padding: 0 20px !important;
+            }
+
+            .mobile-mb-3 {
+                margin-bottom: 10px !important;
+            }
+
+            .mobile-mt-3 {
+                margin-top: 1.2em !important;
+            }
+        }
+
+        .category_split {
+            background-color: rgb(0, 25, 91) !important; /* Newly Arrived*/
+            color: white !important;
+            font-size: 1.8em;
+            padding-left: 0.3em;
+            padding-right: 0.3em;
+        }
+
+        /************************* sec2 */
+
+
+        #sec2 {
+            padding: 80px 0;
+            /*max-width: 1240px;*/
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sec2_about {
+            width: 100%;
+            margin-bottom: 134px;
+        }
+
+        .about_title {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 85px;
+        }
+
+        .about_title p {
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-right: 30px;
+        }
+
+        .about_title .more {
+            position: absolute;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .about_title .more:not(:last-child) {
+            text-decoration: underline;
+        }
+
+        .about_title .more i {
+            font-size: 24px;
+            color: #d9531e;
+            margin-left: 16px;
+        }
+
+        .about_title .more:hover i {
+            animation: rotatePlus 0.4s ease-in-out;
+        }
+
+        @keyframes rotatePlus {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .about_wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .about_title_wrap {
+            display: flex;
+        }
+
+        .about_contents {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 31%;
+            height: 200px;
+        }
+
+        .about_line {
+            width: 1px;
+            height: 200px;
+            background-color: #e6e6e6;
+        }
+
+        .about_contents > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*
+        .about_contents>div.dallor{
+            align-items: center;
+        } */
+
+        .about_contents > div > span {
+            font-size: 3.125em;
+            font-weight: 700;
+            color: #d9531e;
+        }
+
+        .about_count {
+            font-size: 3.125em;
+            font-weight: 700;
+            color: #d9531e;
+        }
+
+        .about_over {
+            font-size: 1.5625rem;
+            font-weight: 500;
+            color: #d9531e;
+            margin-right: 10px;
+        }
+
+        .about_contents > p:nth-child(2) {
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 36px;
+        }
+
+        .about_contents > p:nth-child(3) {
+            font-size: 1.125em;
+            text-align: center;
+            color: #aaaaaa;
+        }
+
+        .sec2_order {
+            width: 100%;
+        }
+
+        .order_title {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .order_title p {
+            font-weight: 900;
+            font-size: 1.5em;
+        }
+
+        .order_wrap {
+            width: 100%;
+            height: 411px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order_contents {
+            width: 100%;
+            height: 387px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border: 2px solid #e6e6e6;
+            transition: 0.4s;
+            padding: 0 20px;
+        }
+
+        .order_logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .order_contents:nth-child(3) .order_logo {
+            /* padding-bottom: 23px; */
+        }
+
+        .order_contents p {
+            text-align: center;
+            font-size: 1.125em;
+            line-height: 26px;
+        }
+
+        .order_contents .order_cap {
+            font-size: 0.938em;
+            font-weight: 700;
+            text-decoration: underline;
+            color: #aaaaaa;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .order_btn {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 37px;
+            background-color: #e6e6e6;
+            transition: 0.4s;
+        }
+
+        .order_btn i {
+            font-size: 1.6em;
+            color: #aaaaaa;
+            text-decoration: none;
+        }
+
+        .order_contents:hover {
+            margin-bottom: 22px;
+            border: 2px solid #0e1632;
+        }
+
+        .order_contents:hover .order_cap {
+            color: #0e1632;
+        }
+
+        .order_contents:hover .order_btn {
+            background-color: #0e1632;
+        }
+
+        .order_contents:hover .order_btn i {
+            color: #fff;
+        }
+
+        /************************* sec2 */
+
+
+    </style>
+
+
+    <!-- 배너  -->
+    <br>
+    <br>
+    <div th:replace="~{/user/fragments/banner22 :: banner}"></div>
+
+
+    <!-- 배너 끝   -->
+
+    <script>
+        $(function () {
+            ScrollReveal().reveal('.card', {interval: 80, reset: true});
+            ScrollReveal().reveal('.category_split', {interval: 500, reset: true});
+        })
+
+    </script>
+
+    <!-- START 최근 피드 -->
+    <div>
+        <!--		<div class="section small_pt pb_20" th:if="${recentFeed.size() >= 3}">-->
+        <!--			<div class="container">-->
+        <!--				<div class="row justify-content-start">-->
+        <!--					<div class="col-md-6">-->
+        <!--						<div class="text-start mb-2">-->
+        <!--							<span class="category_split">-->
+        <!--								<a href="/content-list" style="color:white">-->
+        <!--									<b>#</b>최근 피드-->
+        <!--								</a>-->
+        <!--							</span>-->
+        <!--						</div>-->
+        <!--						<div class="small_divider clearfix"></div>-->
+        <!--					</div>-->
+        <!--				</div>-->
+        <!--				<div class="row shop_container main-card-group">-->
+
+        <!--					<div class="col-6 p-3" th:with="feed=${recentFeed.get(0)}">-->
+        <!--						<div class="main-card">-->
+        <!--							&lt;!&ndash;						div hover right top with category&ndash;&gt;-->
+        <!--							<div class="hover-right-top">-->
+        <!--								<div class="hover-right-top-category" th:text="${feed.category}"></div>-->
+        <!--							</div>-->
+
+        <!--							<div class="img-container43">-->
+        <!--								<a th:href="'/feed/' + ${feed.id}">-->
+        <!--									<img th:src="'/file/' + ${feed.thumbnailFileName}" class="w-100">-->
+        <!--								</a>-->
+        <!--							</div>-->
+
+        <!--							<div class="product_info mobile-mt-3">-->
+        <!--								<h6 class="recent_feed_title"><a th:href="'/feed/' + ${feed.id}"-->
+        <!--								                                 th:text="${feed.title}"></a></h6>-->
+        <!--								<div class="recent_feed_subtitle mh-2 mb-2" th:text="${feed.descriptionNoHtml}">-->
+        <!--								</div>-->
+        <!--								<a th:href="'/feed/' + ${feed.id}"-->
+        <!--								   class="btn btn-primary btn-more rounded-pill mobile-mb-3">더-->
+        <!--									알아보기</a>-->
+        <!--							</div>-->
+        <!--						</div>-->
+        <!--					</div>-->
+
+        <!--					<div class="main-card-split col-6 p-3">-->
+        <!--						<div class="main-card" th:with="feed=${recentFeed.get(1)}">-->
+        <!--							<div class="row">-->
+        <!--								<div class="col-6">-->
+        <!--									<div class="img-container43">-->
+        <!--										<a th:href="'/feed/' + ${feed.id}">-->
+        <!--											<img th:src="'/file/' + ${feed.thumbnailFileName}">-->
+        <!--										</a>-->
+        <!--									</div>-->
+        <!--								</div>-->
+
+        <!--								<div class="col-6 p-3">-->
+        <!--									<div class="row">-->
+        <!--										<div class="product_info">-->
+        <!--											<div class="recent_feed_category" th:text="${feed.category}"></div>-->
+        <!--											<h6 class="recent_feed_title"><a th:href="'/feed/' + ${feed.id}"-->
+        <!--											                                 th:text="${feed.title}"></a></h6>-->
+        <!--											<div class="recent_feed_subtitle mb-4" th:text="${feed.descriptionNoHtml}">-->
+        <!--											</div>-->
+        <!--											<a th:href="'/feed/' + ${feed.id}"-->
+        <!--											   class="btn btn-primary btn-more rounded-pill">더-->
+        <!--												알아보기</a>-->
+        <!--										</div>-->
+        <!--									</div>-->
+        <!--								</div>-->
+        <!--							</div>-->
+        <!--						</div>-->
+
+        <!--						<div class="main-card" th:with="feed=${recentFeed.get(2)}">-->
+        <!--							<div class="row">-->
+        <!--								<div class="col-6">-->
+        <!--									<div class="img-container43">-->
+        <!--										<a th:href="'/feed/' + ${feed.id}">-->
+        <!--											<img th:src="'/file/' + ${feed.thumbnailFileName}">-->
+        <!--										</a>-->
+        <!--									</div>-->
+        <!--								</div>-->
+
+        <!--								<div class="col-6 p-3">-->
+        <!--									<div class="row">-->
+        <!--										<div class="product_info">-->
+        <!--											<div class="recent_feed_category" th:text="${feed.category}"></div>-->
+        <!--											<h6 class="recent_feed_title"><a th:href="'/feed/' + ${feed.id}"-->
+        <!--											                                 th:text="${feed.title}"></a></h6>-->
+        <!--											<div class="recent_feed_subtitle mb-4" th:text="${feed.descriptionNoHtml}">-->
+        <!--											</div>-->
+        <!--											<a th:href="'/feed/' + ${feed.id}"-->
+        <!--											   class="btn btn-primary btn-more rounded-pill">더-->
+        <!--												알아보기</a>-->
+        <!--										</div>-->
+        <!--									</div>-->
+        <!--								</div>-->
+        <!--							</div>-->
+        <!--						</div>-->
+        <!--					</div>-->
+
+        <!--				</div>-->
+        <!--			</div>-->
+        <!--		</div>-->
+        <!-- END 최근 피드 -->
+
+        <!--    ABOUT US    -->
+
+        <section id="sec2" style="text-align: center">
+            <div class="sec2_about">
+                <div class="about_title">
+                    <div class="about_title_wrap">
+                        <p>ABOUT SAFEWAY AUTO 형이랑 상의</p>
+                    </div>
+                </div>
+                <div class="about_wrap">
+                    <div class="about_contents wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <div>
+                            <p class="about_over">Over</p>
+                            <p id="about_count1" class="about_count">1,000</p>
+                        </div>
+                        <p>vehicles per year</p>
+                        <p>
+                            Every month we deal with 80-150 vehicles<br>
+                            and the capacity is growing.
+                        </p>
+                    </div>
+                    <div class="about_line"></div>
+                    <div class="about_contents wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="dollor"><span>$</span>
+                            <p id="about_count2" class="about_count">7,000,000</p>
+                        </div>
+                        <p>USD</p>
+                        <p>
+                            We have achieved over 7 million dollars<br>
+                            in sales in 2020.
+                        </p>
+                    </div>
+                    <div class="about_line"></div>
+                    <div class="about_contents wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                        <div>
+                            <p class="about_over">Over</p>
+                            <p id="about_count3" class="about_count">7</p>
+                        </div>
+                        <p>countries</p>
+                        <p>
+                            We are dealing with customers<br>
+                            from more than 7 countries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="sec2_order">
+                <div class="order_title">
+                    <p>SEE VEHICLES 형이랑 상의</p>
+                </div>
+
+                <div class="order_wrap">
+
+                    <a href="#" class="order_contents wow fadeInUp"
+                       style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="order_logo">
+                            <img src="#" alt="skencar">
+                        </div>
+                        <p>
+                            Check out numerous inventories<br>
+                            from the most trusted website for used cars.
+                        </p>
+                        <div class="order_cap">
+                            Choose from the No.1 used car trading platform
+                        </div>
+                        <div class="order_btn">
+                            <i class="zwicon-arrow-right"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="order_contents wow fadeInUp"
+                       style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="order_logo">
+                            <img src="#" alt="logo">
+                        </div>
+                        <p>
+                            Over 5,000 cars are out on car auctions <br>every week in Korea. <br>
+                            A few could be yours.
+                        </p>
+                        <div class="order_cap">
+                            Choose from car auctions.
+                        </div>
+                        <div class="order_btn">
+                            <i class="zwicon-arrow-right"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="order_contents wow fadeInUp"
+                       style="visibility: visible; animation-name: fadeInUp;">
+
+                        <div class="order_logo">
+                            <img src="#" alt="">
+                        </div>
+                        <p class="order_txt">
+                            Check out SEOBUK's real-time inventories.<br>
+                            The fastest and cheapest way to buy.
+                        </p>
+                        <div class="order_cap">
+                            Talk to one of the sales agents.
+                        </div>
+                        <div class="order_btn">
+                            <i class="zwicon-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--   ABOUT US     -->
+
+        
+        <!-- START 카테고리별 피드 0-->
+        <div class="section small_pt pb_20 mb-5" th:if="${story_category.size() > 0}">
+            <div class="container">
+                <div class="row justify-content-start mb-3">
+                    <div class="col-md-6">
+                        <div class="text-start">
+							<span class="category_split">
+                                <b>Newly Arrived - 여기 형이랑 같이 상의</b>
+							</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-group flex-wrap">
+                    <div class="card hover-big circle-top" th:each="feed: ${story_category}">
+                        <div class="img-container43">
+                            <img th:src="'/thumb/' + *{feed.getThumbnailFileName()}" class="card-img-top circle-top"
+                                 alt="피드 썸네일 이미지" loading=lazy>
+                        </div>
+                        <div class="card-body" data-same-height='true'>
+                            <h5 class="card-title" th:text="${feed.title}"></h5>
+                            <th:block>
+                                <p class="card-text" th:text="${feed.description}">
+                                    <!--						   th:inline="text">-->
+                                    <!--							[[${#strings.abbreviate(feed.feed.description, 40)}]]-->
+                                </p>
+                            </th:block>
+                            <a th:href="'/feed/' + *{feed.id}" class="btn btn-primary btn-more rounded-pill">더 알아보기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</html>
