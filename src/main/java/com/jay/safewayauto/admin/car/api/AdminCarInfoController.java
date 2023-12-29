@@ -7,14 +7,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin")
-public class CarInfoController {
+public class AdminCarInfoController {
 
     private final CarInfoService carInfoService;
 
@@ -22,10 +25,15 @@ public class CarInfoController {
     /**
      * 업로드
      */
-    @PostMapping("/sales-history")
-    public ResponseEntity<String> uploadCarInfos(@RequestBody CarInfoRequestDto carInfoRequestDto) {
+    @PostMapping("/car/upload")
+    public void uploadCarInfos(@ModelAttribute CarInfoRequestDto carInfoRequestDto,
+                                 @RequestPart(value = "imgLink") MultipartFile file,
+                                 HttpServletResponse response) throws IOException {
 
-        return new ResponseEntity<>("success", HttpStatus.OK);
+
+        carInfoService.uploadCarInfo(carInfoRequestDto, file);
+
+        response.sendRedirect("/admin/car/list");
     }
 
 
@@ -33,17 +41,24 @@ public class CarInfoController {
      * 수정
      *
      */
-    @PutMapping("/sales-history")
-    public ResponseEntity<String> updateCarInfos(){
+    @PutMapping("/car/update/{carId}")
+    public void updateCarInfos(@PathVariable(value = "carId") Long carId,
+                                                 @ModelAttribute CarInfoRequestDto carInfoRequestDto,
+                                                 @RequestPart(value = "imgLink") MultipartFile file,
+                                                 HttpServletResponse response) throws IOException {
 
-        return new ResponseEntity<>("success", HttpStatus.OK);
+        carInfoService.updateCarInfo(carId, carInfoRequestDto, file);
+
+        response.sendRedirect("/admin/car/list");
     }
 
     /**
      * 삭제
      */
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteCarInfos(){
+    @DeleteMapping("/car/delete/{carId}")
+    public ResponseEntity<String> deleteCarInfos(@PathVariable(value = "carId") Long carId){
+
+        carInfoService.deleteCarInfo(carId);
 
         return new ResponseEntity<>("success", HttpStatus.OK);
     }

@@ -1,157 +1,299 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{user/layout/default_layout}" lang="ko">
 
-<div layout:fragment="content" class="content">
 
-    <style>
+    <div layout:fragment="content" class="content">
 
-        .sort_type span {
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 6rem;
-            display: inline-block;
-            /*border: 2px solid #ddd;*/
-            text-align: center;
-            height: 32px;
-            line-height: 28px;
-            font-size: 14px;
-            margin-bottom: 3px;
-            color: black;
-            font-weight: lighter;
-        }
-
-        .sort_type span.active {
-            /*edited hun*/
-            /*border-color: #525151;*/
-            color: black;
-            font-weight: bold;
-            /*color: #fff;*/
-        }
-
-        .tags a.active {
-            color: white;
-            background-color: #001c63;
-        }
-
-        /*mobile*/
-        @media (max-width: 767px) {
-            #search-menu div[class^="col-"] {
-                width: 100%;
+        <style>
+            .sort_type span {
+                cursor: pointer;
+                text-transform: uppercase;
+                width: 6rem;
+                display: inline-block;
+                /*border: 2px solid #ddd;*/
+                text-align: center;
+                height: 32px;
+                line-height: 28px;
+                font-size: 14px;
+                margin-bottom: 3px;
+                color: black;
+                font-weight: lighter;
             }
-        }
-    </style>
+
+            .sort_type span.active {
+                /*edited hun*/
+                /*border-color: #525151;*/
+                color: black;
+                font-weight: bold;
+                /*color: #fff;*/
+            }
+
+            .tags a.active {
+                color: white;
+                background-color: #001c63;
+            }
+
+            /*mobile*/
+            @media (max-width: 767px) {
+                #search-menu div[class^="col-"] {
+                    width: 100%;
+                }
+            }
+
+            /**************************************** sold 시작 */
+
+            .sold_wrap{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                column-gap: 20px;
+                row-gap: 40px;
+            }
+
+            .sold_wrap li{
+                list-style-type: none;
+                list-style: none;
+            }
+            /*.sold_wrap li a{*/
+            /*    max-width: 200px;*/
+            /*    width: 100%;*/
+            /*    display: flex;*/
+            /*    flex-direction: column;*/
+            /*    align-items: center;*/
+            /*    gap: 20px;*/
+            /*}*/
+
+            .sold_thumb{
+                max-width: 200px;
+                height: 120px;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .sold_thumb img{
+                object-fit: contain;
+            }
+
+            .sold_cap{
+                max-width: 200px;
+                width: 100%;
+                text-align: center;
+            }
 
 
-    <div class="breadcrumb_section bg_gray page-title-mini">
-        <div class="container"><!-- STRART CONTAINER -->
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="page-title">
-                        <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
-                        <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
-                            company of used vehicles and auto parts. </p>
+            .sold_price{
+                color: #d9531e;
+                font-size: 1.0em;
+                word-break: break-all;
+            }
+
+
+            @media screen and (max-width: 540px) {
+
+                .sold_wrap {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            /**************************************** sold */
+
+            /* page */
+            .pagination {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .pagination a {
+                color: black;
+                float: none;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+                border: 1px solid #ddd;
+                margin: 0 4px;
+            }
+
+            .pagination a.active {
+                background-color: #33388e;
+                color: white;
+                border: 1px solid #33388e;
+            }
+
+            .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+        </style>
+
+
+        <div class="breadcrumb_section bg_gray page-title-mini">
+            <div class="container"><!-- STRART CONTAINER -->
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="page-title">
+                            <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
+                            <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
+                                company of used vehicles and auto parts. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ol class="breadcrumb justify-content-md-end">
+                            <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                            <li class="breadcrumb-item active">SALES HISTORY</li>
+                        </ol>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">ABOUT US</li>
-                        <li class="breadcrumb-item active">COMPANY PROFILE</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- END CONTAINER-->
-    </div>
+            </div><!-- END CONTAINER-->
+        </div>
 
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="row mb-3" id="blank-space">
-                        <br/>
-
-                    </div>
-                    <div class="row">
-                    </div>
-                    <div class="row" id="text-space">
-                        AJ International Traders is an export oriented company of used vehicles and auto parts. We are
-                        offering car purchase solution to used car exporters and customers around the globe to buy cars
-                        at ease.
-                        <br/>
-
-                        <br/>
-                        Since our establishment in 2010, our business has been experiencing 100% sales growth each year.
-                        In 2012, we were proud to be a recipient of President Award for exporting 10 million dollars
-                        worth goods overseas. In 2015, we have exported 2500 units to 21 countries with $20 million
-                        dollars sales revenue.
-                        <br/>
-
-                        <br/>
-                        Along with AJ Rentacar and AJ Sellcar, AJ International Traders is a subsidiary company of AJ
-                        Family Corporation. For your guidance, AJ Rentacar is one of leading rentacar business in Korea
-                        with 632 billion dollars sales revenue in 2015. AJ Sellcar owns the biggest auto auction in
-                        Korea and has purchasing departments across Korea. Therefore, we are able to source big volumes
-                        of rent cars and personal cars that have undergone proper maintenance and strict inspection
-                        through our networks.
-                        <br/>
-                        <br/>
-                        The advantage of doing business with AJ International Traders is that we offer 100% transparent
-                        accident history for all of our vehicles at domestic market price. Through our “Auction”
-                        service, we encourage overseas buyers to find their favorite vehicles and to participate in
-                        bidding with their desired price. Also, we offer “All Inclusive Concierge Service” where we
-                        assist buyers step by step from helping buyers to find their favorite vehicles and to deliver
-                        their vehicles to their designated countries.
-                        <br/>
-                        <br/>
-                        Under our slogan “What You See is What You Get”, we are endlessly pursuing R&D to make 100%
-                        transparent transaction with overseas buyers and to build stronger trust between both parties
-                        for our mutual benefits.
-                        <br/>
-                        <br/>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
-                    <div class="sidebar">
-                        <div class="widget">
-                            <h5 class="widget_title">ABOUT US</h5>
-                            <div class="tags" style="display:grid">
-                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
-                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
-                                <!--                                    COMPANY PROFILE-->
-                                <!--                                </a>-->
-                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
-                                <!--                                    BUSINESS-->
-                                <!--                                </a>-->
-                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
-                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
-                                   th:href="@{/company-profile}">
-                                    COMPANY PROFILE
-                                </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}" th:href="@{/business}">
-                                    BUSINESS
-                                </a>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="row mb-3" id="blank-space">
+                            <br/>
+                        </div>
+                        <div class="row">
+                            <div class="wrapper" >
+                                <ul class="sold_wrap" id="carListSpace" >
+<!--                                    <li th:each="car: ${carList}">-->
+<!--                                        <div class="sold_thumb">-->
+<!--                                            <img th:src="@{${car.imgLink}}" alt="no image">-->
+<!--                                        </div>-->
+<!--                                        <div class="sold_cap">-->
+<!--                                            <span class="sold_title" th:text="${car.carName}">PALISADE</span><br>-->
+<!--                                            <span class="sold_price" th:text="${car.price}">50,000 USD</span>-->
+<!--                                            <spant th:text="${carStat.index}"></spant>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row" style="width: 100%; text-align: center">
+                            <div class="pagination" id="pagination">
                                 <script>
-                                    $(document).ready(function () {
-                                        $('.tags a').click(function () {
-                                            $('.tags a').removeClass('active');
-                                            $(this).addClass('active');
-                                        });
-                                    });
+                                    function clickPage(page){
+
+                                        $.ajax({
+                                            type: "GET",
+                                            url: "/carlist?page="+page,
+                                            // url: "/sales-history?page="+page,
+                                            // dataType: "json",
+                                            success: function (carList) {
+                                                const option = {
+                                                    maximumFractionDigits: 4
+                                                };
+
+                                                let carListSpace = $("#carListSpace");
+                                                carListSpace.empty();
+                                                makePagenation(carList);
+
+                                                console.log(carList);
+
+                                                carList.content.forEach(function(car){
+                                                    carListSpace.append(
+                                                        `<li>
+                                                        <div class="sold_thumb">
+                                                        <img style=" width: 100%; height: 100%; object-fit: contain;" src="${car.imgLink}" alt="no image">
+                                                    </div>
+                                                    <div class="sold_cap">
+                                                    <span class="sold_title">${car.carName}</span><br>
+                                                    <span class="sold_price">$${car.price.toLocaleString('ko-Kr', option)} USD</span>
+                                                    </div>
+                                                </li>`);
+
+                                                })
+
+                                            },
+                                            error: function () {
+                                                alert("error");
+                                            }
+                                        })
+                                    }
+
+
+                                    function makePagenation(page){
+                                        let pagination = $("#pagination");
+                                        pagination.empty();
+
+                                        let curr = page.number; // 0 부터임
+
+                                        console.log("curr : " +curr);
+                                        let endPage = Math.ceil((curr+1) / 10.0) * 10; // 1~10
+                                        let startPage = endPage - 9; // 1~10
+
+                                        console.log("start : " +startPage);
+                                        console.log("end : " +endPage);
+
+                                        if(endPage > page.totalPages-1){ // totalPage는 1부터 셈(Page는 0부터 시작이니 1 빼기)
+                                            endPage = page.totalPages;
+                                        }
+
+                                        if(curr > 0){ // 이전버튼(<<) &laquo
+                                            pagination.append(`<a onclick="clickPage(${curr-1}); return false;" href="javascript:void(0)" >&lt;</a>`)
+                                        }
+
+                                        for(let i = startPage; i <= endPage; i++){
+                                            if(curr == i-1){ // active 설정
+                                                pagination.append(`<a class="active" onclick="clickPage(${i-1}); return false;" href="javascript:void(0)">${i}</a>`)
+                                            }
+                                            else{
+                                                pagination.append(`<a onclick="clickPage(${i-1}); return false;" href="javascript:void(0)">${i}</a>`)
+                                            }
+                                        }
+
+                                        if(curr + 1 < page.totalPages){ // 이후버튼(>>) &raquo
+                                            pagination.append(`<a onclick="clickPage(${curr+1}); return false;" href="javascript:void(0)">&gt;</a>`)
+                                        }
+
+                                        window.scrollTo(0,0); // 맨 위로 이동
+
+                                    }
+
+                                    // 처음 들어올 때
+                                    $(document).ready(function (){
+                                        console.log("첫 진입")
+                                        clickPage(0);
+                                    })
+
                                 </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <h5 class="widget_title">ABOUT US</h5>
+                                <div class="tags" style="display:grid">
+                                    <a th:classappend="${category == 'SALES_HISTORY' ? 'active' : ''}"
+                                       th:href="@{/sales-history}">
+                                        SALES HISTORY
+                                    </a>
+
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('.tags a').click(function () {
+                                                $('.tags a').removeClass('active');
+                                                $(this).addClass('active');
+                                            });
+                                        });
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
+
 
 
 </html>

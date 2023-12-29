@@ -1,7 +1,7 @@
-package com.jay.safewayauto.admin.carinfo.api.dto.res;
+package com.jay.safewayauto.admin.car.api.dto.res;
 
 
-import com.jay.safewayauto.domain.car.info.domain.CarInfo;
+import com.jay.safewayauto.domain.car.domain.CarInfo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

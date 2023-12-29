@@ -1,4 +1,4 @@
-package com.jay.safewayauto.admin.controller.dto;
+package com.jay.safewayauto.admin.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,183 +1,60 @@
-package com.jay.safewayauto.api.user;
+package com.jay.safewayauto.api.user.saleshistory;
 
-import com.jay.safewayauto.domain.banner.application.BannerService;
+import com.jay.safewayauto.domain.car.application.CarInfoService;
+import com.jay.safewayauto.domain.car.application.dto.CarInfoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class UserViewApi {
+public class SalesHistoryViewApi {
 
+    private final CarInfoService carInfoService;
     /**
-     * =========================================================================================================
-     * MAIN
-     */
-    private final BannerService bannerService;
-    @GetMapping("/")
-    public String mainPage(Model model){
-
-        model.addAttribute("disableLoading", true);
-//        model.addAttribute("popupList", popupService.getAllPopupList());
-//        model.addAttribute("bannerFeed", feedService.getBannerFeed());
-
-        model.addAttribute("bannerList", bannerService.getBannerImages());
-
-        // category Feed
-        // 최근 피드, 패션, 편집샵 스토리, 소품, 레코드 (순서대로)
-//        model.addAttribute("recentFeed", feedService.getRecentFeed());
-//        model.addAttribute("fashion_category", feedService.getFeedByCategory("패션"));
-//        model.addAttribute("story_category", feedService.getFeedByCategory("편집샵 스토리"));
-//        model.addAttribute("goods_category", feedService.getFeedByCategory("소품"));
-//        model.addAttribute("record_category", feedService.getFeedByCategory("래코드"));
-
-        log.info("=======" + "MAIN PAGE");
-        return "user/content/main";
-    }
-
-    /**
-     * =========================================================================================================
-     * ABOUT US
-     *
-     */
-    @GetMapping("/company-profile")
-    public String companyProfilePage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/aboutus/company-profile";
-    }
-
-
-    /**
-     * =========================================================================================================
-     * SERVICES
-     */
-
-    @GetMapping("/daily-auction")
-    public String dailyAuctionPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/daily-auction";
-    }
-
-    @GetMapping("/weekly-auction")
-    public String weeklyAuctionPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/weekly-auction";
-    }
-
-    @GetMapping("/dealerships")
-    public String dealershipsPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/dealerships";
-    }
-
-    @GetMapping("/stocks")
-    public String stocksPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/stocks";
-    }
-
-    @GetMapping("/government-tender")
-    public String governmentTenderPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/government-tender";
-    }
-
-    @GetMapping("/preconditioning")
-    public String preconditioningPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
-
-        model.addAttribute("category", category);
-        return "user/content/pages/services/preconditioning";
-    }
-
-    /**
-     * =========================================================================================================
-     * SALES HISTORY
-     *
-     * 페이징처리
-     * 최신순
+     * sales history page
      */
     @GetMapping("/sales-history")
-    public String salesHistoryPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
+    public String salesHistoryPage(@PageableDefault(size = 32, sort="createdAt", direction = Sort.Direction.DESC) Pageable pageable, Model model){
 
-        model.addAttribute("category", category);
+        log.info("==== sales history ====");
+
+        Page<CarInfoDto> carList = carInfoService.getCarList(pageable);
+
+        model.addAttribute("carList",carList);
+
         return "user/content/pages/saleshistory/sales-history";
     }
 
     /**
-     * =========================================================================================================
-     * SHIPPING
+     * carList + paging 처리(ajax)
      */
-    @GetMapping("/shipping")
-    public String shippingPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
+    @GetMapping("/carlist")
+    @ResponseBody
+    public ResponseEntity<Page<CarInfoDto>> getCarList(@PageableDefault(size = 32, sort="createdAt", direction = Sort.Direction.DESC) Pageable pageable){
 
-        model.addAttribute("category", category);
-        return "user/content/pages/shipping/shipping";
+        log.info("==== car List + ====");
+
+        Page<CarInfoDto> carList = carInfoService.getCarList(pageable);
+
+        return new ResponseEntity<>(carList, HttpStatus.OK);
     }
 
-    /**
-     * =========================================================================================================
-     * CONTACT US
-     */
 
 
-    @GetMapping("/contact-us")
-    public String contactUsPage(Model model, String category){
-        model.addAttribute("disableLoading", true);
-        if (category == null) {
-            category = "전체";
-        }
 
-        model.addAttribute("category", category);
-        return "user/content/pages/contactus/contact-us";
-    }
-    /**
-     *
-     * =========================================================================================================
-     *
-     */
+
+
 }

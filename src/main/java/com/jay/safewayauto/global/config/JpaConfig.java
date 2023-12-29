@@ -1,4 +1,4 @@
-package com.sh.chicken.global.config;
+package com.jay.safewayauto.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

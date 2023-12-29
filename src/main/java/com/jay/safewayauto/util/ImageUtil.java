@@ -1,4 +1,4 @@
-package com.sch.shift3.utill;
+package com.jay.safewayauto.util;
 
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;

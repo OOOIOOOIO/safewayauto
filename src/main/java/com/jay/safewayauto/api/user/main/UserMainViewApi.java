@@ -1,6 +1,7 @@
 package com.jay.safewayauto.api.user.main;
 
-import com.jay.safewayauto.domain.banner.application.BannerService;
+import com.jay.safewayauto.api.user.main.banner.service.BannerService;
+import com.jay.safewayauto.api.user.main.main.service.MainCarImgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -10,32 +11,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class MainViewApi {
+public class UserMainViewApi {
 
     /**
      * =========================================================================================================
      * MAIN
      */
     private final BannerService bannerService;
+    private final MainCarImgService mainCarImgService;
 
     @GetMapping("/")
     public String mainPage(Model model){
 
         model.addAttribute("disableLoading", true);
-//        model.addAttribute("popupList", popupService.getAllPopupList());
-//        model.addAttribute("bannerFeed", feedService.getBannerFeed());
 
         model.addAttribute("bannerList", bannerService.getBannerImages());
+        model.addAttribute("carImgList", mainCarImgService.getMainCarImages());
 
-        // category Feed
-        // 최근 피드, 패션, 편집샵 스토리, 소품, 레코드 (순서대로)
-//        model.addAttribute("recentFeed", feedService.getRecentFeed());
-//        model.addAttribute("fashion_category", feedService.getFeedByCategory("패션"));
-//        model.addAttribute("story_category", feedService.getFeedByCategory("편집샵 스토리"));
-//        model.addAttribute("goods_category", feedService.getFeedByCategory("소품"));
-//        model.addAttribute("record_category", feedService.getFeedByCategory("래코드"));
+        log.info("=======" + "MAIN PAGE" + "========");
 
-        log.info("=======" + "MAIN PAGE");
         return "user/content/main";
     }
 

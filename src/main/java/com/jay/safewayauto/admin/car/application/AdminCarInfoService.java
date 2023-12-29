@@ -1,4 +1,4 @@
 package com.jay.safewayauto.admin.car.application;
 
-public class CarInfoService {
+public class AdminCarInfoService {
 }

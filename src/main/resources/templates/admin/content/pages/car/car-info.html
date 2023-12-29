@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/admin/layout/default_layout}" xmlns="http://www.w3.org/1999/xhtml"
+<html layout:decorate="~{admin/layout/default_layout}" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
 
 <th:block layout:fragment="css">
@@ -19,25 +19,59 @@
         const editMode = /*[[${editMode}]]*/ false;
 	</script>
 
-	<h1 th:if="${editMode == true}" class="mt-4">컨텐츠 수정</h1>
-	<h1 th:unless="${editMode == true}" class="mt-4">컨텐츠 생성</h1>
+	<h1>Car info</h1>
 	<ol class="breadcrumb mb-4">
-		<li th:if="${editMode == true}" class="breadcrumb-item active">Edit Contents</li>
-		<li th:unless="${editMode == true}" class="breadcrumb-item active">Add New Contents</li>
+		<li class="breadcrumb-item active">Detail Car Info</li>
 	</ol>
+	<div class="move" style="text-align: right;">
+		<a th:href="@{/admin/car/update/{carId}(carId=${carId})}" class="btn btn-primary my-status-button shadow">자동차 정보 수정하기</a>&nbsp;
+		<button type="button" onclick="deleteCarInfo()" class="btn btn-primary my-status-button shadow">자동차 정보 삭제</button>
+		<script type="text/javascript" th:inline="javascript">
+
+			function deleteCarInfo(){
+				// let carId = $("#carId");
+				let carId = [[${carId}]];
+
+				$.ajax(
+						{
+							type:"DELETE",
+							url:"/admin/car/delete/"+carId,
+							contentType:"application/json; charset=utf-8",
+							success:function(result){
+								console.log("success ajax");
+								alert("삭제 성공")
+								console.log("result : " +result);
+
+								// 리스트로
+								location.replace("/admin/car/list");
+
+							},
+							error:function(e, status, xhr){
+								console.log("ajax fail");
+								alert("실패")
+								console.log(e);
+								// 다시 information으로
+								location.replace("/admin/car/list");
+							}
+						}
+				)
+
+			}
+		</script>
+	</div>
 
 	<!--/*@thymesVar id="ProductDto" type="com.sch.shift3.user.dto.ContentFeedDto"*/-->
-	<form name="uploadForm" action="" th:object="${carInfo}" th:action="@{/admin/car/upload}" method="post" enctype="multipart/form-data">
+	<div th:object="${carInfo}">
 		<div class="card-body">
 			<div class="row mb-3">
-				<input type="text" th:field="*{carId}" hidden/>
+				<p id="carId" type="text" th:text="*{carId}" hidden></p>
 				<div class="col-8">
 					<label class="form-label" for="carName">자동차 이름 & 연식</label>
-					<input class="form-control" type="text" id="carName" name="carName" th:field="*{carName}"/>
+					<p class="form-control" type="text" id="carName" name="carName" th:text="*{carName}"></p>
 				</div>
 				<div class="col-8">
 					<label class="form-label" for="price">가격</label>
-					<input class="form-control" type="number" id="price" name="price" th:field="*{price}"/>
+					<p class="form-control" type="number" id="price" name="price" th:text="*{price}"></p>
 				</div>
 
 			</div>
@@ -45,37 +79,12 @@
 			<hr>
 
 			<div class="row mb-3">
-				<!--			썸네일 이미지 업로드-->
 				<label class="form-label" for="imgLink">썸네일 이미지 업로드</label>
-				<input id="imgLink" name="imgLink" th:field="*{imgLink}" type="file"/>
-			</div>
-
-			<div class="row mb-5">
-				<details>
-					<summary>썸네일 미리보기</summary>
-					<div>
-						<div class="card-group d-flex flex-wrap">
-							<div class="card">
-								<div class="img-container43">
-									<img src="" class="card-img-top rounded"
-									     alt="your-image-alt">
-								</div>
-								<div class="card-body">
-									<h5 class="card-title">썸네일 미리보기</h5>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</details>
-			</div>
-
-			<div class="move" style="text-align: center;">
-				<input type="submit" class="btn btn-primary my-status-button shadow " value="자동차 업로드 하기">
+				<img class="img-fluid" id="imgLink"  th:src="*{imgLink}" type="file"/>
 			</div>
 
 		</div>
-	</form>
+	</div>
 </div>
 
 </html>

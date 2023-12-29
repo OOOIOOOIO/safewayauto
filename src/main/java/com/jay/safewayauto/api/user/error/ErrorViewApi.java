@@ -1,4 +1,4 @@
-package com.jay.safewayauto.api;
+package com.jay.safewayauto.api.user.error;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

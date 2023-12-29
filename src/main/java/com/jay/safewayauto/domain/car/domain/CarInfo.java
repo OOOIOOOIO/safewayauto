@@ -1,4 +1,4 @@
-package com.jay.safewayauto.domain.car.info.domain;
+package com.jay.safewayauto.domain.car.domain;
 
 import com.jay.safewayauto.domain.common.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -23,7 +23,13 @@ public class CarInfo extends BaseTimeEntity {
 
 
     @Builder
-    private static CarInfo createCar(String imgLink, Long price, String carName){
+    private CarInfo(String imgLink, String carName, Long price) {
+        this.imgLink = imgLink;
+        this.carName = carName;
+        this.price = price;
+    }
+
+    public static CarInfo createCar(String imgLink, Long price, String carName){
         return CarInfo.builder()
                 .imgLink(imgLink)
                 .price(price)
@@ -32,15 +38,15 @@ public class CarInfo extends BaseTimeEntity {
 
     }
 
-    public CarInfo(String imgLink, String carName, Long price) {
-        this.imgLink = imgLink;
-        this.carName = carName;
-        this.price = price;
-    }
 
     /**
      * 수정 - 더티체킹
      */
+    public void updateCar(String imgLink, Long price, String carName){
+        this.imgLink = imgLink;
+        this.price = price;
+        this.carName = carName;
+    }
 
 
 

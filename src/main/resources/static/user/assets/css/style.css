@@ -717,7 +717,7 @@ button:focus:not(:focus-visible) {
 	 -webkit-animation: ripple 1.8s infinite ;
     -moz-animation: ripple 1.8s infinite ;
     -o-animation: ripple 1.8s infinite ;
-    -ms-transition:ripple 1.8s infinite ;
+    /*-ms-transition:ripple 1.8s infinite ;*/
 	animation: ripple 1.8s infinite ;
 	background-color: rgb(0, 25, 91);
 	border-radius: 100%;
@@ -1558,7 +1558,7 @@ button:focus:not(:focus-visible) {
 	color: #333 !important;
 }
 .cart_list img {
-	border: 1px solid #ddd
+	border: 1px solid #ddd;
 	background-color: #ffffff;
 	float: left;
 	margin-right: 10px;
@@ -2841,7 +2841,6 @@ input.text {
 	width: 100%;
 }
 .wave_shape_bottom::before {
-	background-image: url("../images/wave_shape.png");
 	display: block;
 	height: 100%;
 	content: "";
@@ -4305,7 +4304,7 @@ footer .widget_title {
 	top: 0;
 	bottom: 0;
 	background-color: rgb(0, 25, 91);
-	z-index: ;
+	/*z-index: ;*/
 	transition: all 0.5s ease-in-out;
 	-moz-transform: scale(0);
 	-webkit-transform: scale(0);

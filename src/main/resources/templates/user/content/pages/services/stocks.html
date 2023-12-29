@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/user/layout/default_layout}" lang="ko">
+      layout:decorate="~{user/layout/default_layout}" lang="ko">
 
 <div layout:fragment="content" class="content">
 
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
                         <li class="breadcrumb-item active">SERVICES</li>
                         <li class="breadcrumb-item active">STOCKS</li>
                     </ol>
@@ -73,7 +73,7 @@
 
                     </div>
                     <div class="row" id="text-space">
-                        <H1>여기는 BUSINESS 추가되면 수정</H1>
+                        <H1>STOCKS PAGE</H1>
                         <br/>
                         <br/>
                     </div>
@@ -85,31 +85,29 @@
                         <div class="widget">
                             <h5 class="widget_title">SERVICES</h5>
                             <div class="tags" style="display:grid">
-                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
-                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
-                                <!--                                    COMPANY PROFILE-->
-                                <!--                                </a>-->
-                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
-                                <!--                                    BUSINESS-->
-                                <!--                                </a>-->
-                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
-                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
+                                <a th:classappend="${category == 'DAILY_ACTION' ? 'active' : ''}"
                                    th:href="@{/daily-auction}">
                                     DAILY AUCTION
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'WEEKLY_AUTION' ? 'active' : ''}"
                                    th:href="@{/weekly-auction}">
                                     WEEKLY AUCTION
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'DEALERSHIPS' ? 'active' : ''}"
                                    th:href="@{/dealerships}">
                                     DEALERSHIPS
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'STOCKS' ? 'active' : ''}"
                                    th:href="@{/stocks}">
                                     STOCKS
+                                </a>
+                                <a th:classappend="${category == 'GOVERNMENT_TENDER' ? 'active' : ''}"
+                                   th:href="@{/government-tender}">
+                                    GOVERNMENT TENDER
+                                </a>
+                                <a th:classappend="${category == 'PRECONDITIONING' ? 'active' : ''}"
+                                   th:href="@{/preconditioning}">
+                                    PRECONDITIONING
                                 </a>
                                 <script>
                                     $(document).ready(function () {

@@ -5,7 +5,7 @@
 <script th:src="@{/user/assets/js/interest-tag.js}"></script>
 <script th:src="@{/valid.js}"></script>
 
-<head th:replace="~{/user/fragments/head :: headFragment}"></head>
+<head th:replace="~{user/fragments/head :: headFragment}"></head>
 
 <th:block layout:fragment="script"></th:block>
 <th:block layout:fragment="css"></th:block>
@@ -17,6 +17,16 @@
 <script src="https://unpkg.com/@yaireo/tagify"></script>
 <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css"/>
 
+<!-- Swiper JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script
+		defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI57Wm77dglT3CkQiNvZHDopBOcRcjAGg&callback=initMap"
+></script>
 
 <!-- LOADER -->
 <div class="preloader" th:if="${disableLoading != true}">
@@ -28,14 +38,16 @@
 </div>
 <!-- END LOADER -->
 
-<div th:if="${enablePopup != null}" th:replace="~{/user/fragments/popup :: popup}"></div>
+<!--<div th:if="${enablePopup != null}" th:replace="~{/user/fragments/popup :: popup}"></div>-->
 
-<div th:replace="~{/user/fragments/header :: headerFragment}"></div>
+<div th:replace="~{user/fragments/header :: headerFragment}"></div>
 
 
 <div layout:fragment="content"></div>
 
 <script src="https://unpkg.com/scrollreveal"></script>
+
+
 
 <!-- popper min js -->
 <script th:src="@{/user/assets/js/popper.min.js}"></script>
@@ -68,7 +80,10 @@
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script th:src="@{/user/assets/js/global-tooltip.js}"></script>
+
+
+
 </body>
 
-<footer th:replace="~{/user/fragments/footer :: footerFragment}"></footer>
+<footer th:replace="~{user/fragments/footer :: footerFragment}"></footer>
 </html>

@@ -1,4 +1,4 @@
-package com.sh.chicken.domain.common;
+package com.jay.safewayauto.domain.common;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -55,9 +55,8 @@
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">ABOUT US</li>
-                        <li class="breadcrumb-item active">COMPANY PROFILE</li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">SHIPPING</li>
                     </ol>
                 </div>
             </div>
@@ -75,39 +74,13 @@
                     <div class="row">
                     </div>
                     <div class="row" id="text-space">
-                        AJ International Traders is an export oriented company of used vehicles and auto parts. We are
-                        offering car purchase solution to used car exporters and customers around the globe to buy cars
-                        at ease.
-                        <br/>
+                        <h1>RORO</h1>
+                        <br><br>
 
-                        <br/>
-                        Since our establishment in 2010, our business has been experiencing 100% sales growth each year.
-                        In 2012, we were proud to be a recipient of President Award for exporting 10 million dollars
-                        worth goods overseas. In 2015, we have exported 2500 units to 21 countries with $20 million
-                        dollars sales revenue.
-                        <br/>
+                        <h1>CONTAINER</h1>
+                        <br><br>
 
-                        <br/>
-                        Along with AJ Rentacar and AJ Sellcar, AJ International Traders is a subsidiary company of AJ
-                        Family Corporation. For your guidance, AJ Rentacar is one of leading rentacar business in Korea
-                        with 632 billion dollars sales revenue in 2015. AJ Sellcar owns the biggest auto auction in
-                        Korea and has purchasing departments across Korea. Therefore, we are able to source big volumes
-                        of rent cars and personal cars that have undergone proper maintenance and strict inspection
-                        through our networks.
-                        <br/>
-                        <br/>
-                        The advantage of doing business with AJ International Traders is that we offer 100% transparent
-                        accident history for all of our vehicles at domestic market price. Through our “Auction”
-                        service, we encourage overseas buyers to find their favorite vehicles and to participate in
-                        bidding with their desired price. Also, we offer “All Inclusive Concierge Service” where we
-                        assist buyers step by step from helping buyers to find their favorite vehicles and to deliver
-                        their vehicles to their designated countries.
-                        <br/>
-                        <br/>
-                        Under our slogan “What You See is What You Get”, we are endlessly pursuing R&D to make 100%
-                        transparent transaction with overseas buyers and to build stronger trust between both parties
-                        for our mutual benefits.
-                        <br/>
+                        <h1>BULK</h1>
                         <br/>
                     </div>
                 </div>
@@ -118,23 +91,11 @@
                         <div class="widget">
                             <h5 class="widget_title">ABOUT US</h5>
                             <div class="tags" style="display:grid">
-                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
-                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
-                                <!--                                    COMPANY PROFILE-->
-                                <!--                                </a>-->
-                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
-                                <!--                                    BUSINESS-->
-                                <!--                                </a>-->
-                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
-                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
-                                   th:href="@{/company-profile}">
-                                    COMPANY PROFILE
+                                <a th:classappend="${category == 'SHIPPING' ? 'active' : ''}"
+                                   th:href="@{/shipping}">
+                                    SHIPPING
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}" th:href="@{/business}">
-                                    BUSINESS
-                                </a>
+
                                 <script>
                                     $(document).ready(function () {
                                         $('.tags a').click(function () {

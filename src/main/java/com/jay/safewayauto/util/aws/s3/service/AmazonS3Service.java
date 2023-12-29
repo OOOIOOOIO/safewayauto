@@ -1,9 +1,7 @@
-package com.sh.chicken.global.util.aws.s3.service;
+package com.jay.safewayauto.util.aws.s3.service;
 
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.sh.chicken.global.exception.CustomException;
-import com.sh.chicken.global.exception.CustomErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Slf4j
 @Service
@@ -29,7 +28,8 @@ public class AmazonS3Service {
 
         String fileUrl = "None";
         try {
-            String fileName = "chicken/" + file.getOriginalFilename();
+            LocalDateTime now = LocalDateTime.now();
+            String fileName = "safeway/" + now + file.getOriginalFilename();
             fileUrl= "https://" + bucket + ".s3." + region + ".amazonaws.com/" + fileName;
             ObjectMetadata metadata= new ObjectMetadata();
 
@@ -42,9 +42,21 @@ public class AmazonS3Service {
         } catch (IOException e) {
 
             log.info("[error] : " + e.getMessage());
-            throw new CustomException(CustomErrorCode.FailToUploadFileToS3Exception); // 만들기
+            throw new RuntimeException("S3 파일 업로드에 실패하였습니다.");
         }
 
     }
+
+
+    public String deleteFile(String imgLink){
+
+        amazonS3Client.deleteObject(bucket, imgLink);
+
+        return null;
+    }
+
+
+
+
 
 }

@@ -1,0 +1,83 @@
+/**************************************** sold 시작 */
+
+.sold_wrap{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 20px;
+    row-gap: 40px;
+}
+
+.sold_wrap li{
+    list-style-type: none;
+    list-style: none;
+}
+.sold_wrap li a{
+    max-width: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.sold_thumb{
+    max-width: 200px;
+    height: 120px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sold_thumb img{
+    object-fit: contain;
+}
+
+.sold_cap{
+    max-width: 200px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.sold_price{
+    color: #d9531e;
+    font-size: 1.0em;
+    word-break: break-all;
+}
+
+
+@media screen and (max-width: 540px) {
+
+
+    .sold_wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/**************************************** sold */
+
+/* page */
+.pagination {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.pagination a {
+    color: black;
+    float: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #33388e;
+    color: white;
+    border: 1px solid #33388e;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

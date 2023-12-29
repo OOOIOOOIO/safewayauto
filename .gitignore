@@ -3,6 +3,10 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
+
+**/src/main/resources/application-local.yml
+**/src/main/resources/application-real.yml
+
 !**/src/test/**/build/
 
 ### STS ###

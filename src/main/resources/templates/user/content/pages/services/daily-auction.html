@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/user/layout/default_layout}" lang="ko">
+      layout:decorate="~{user/layout/default_layout}" lang="ko">
 
 <div layout:fragment="content" class="content">
 
@@ -40,6 +40,26 @@
                 width: 100%;
             }
         }
+
+        /* ============ */
+        .product-title {
+            text-align:center;
+            display:table;
+            border:1px solid #cecece;
+            width:280px;
+            height:250px;
+        }
+
+        .product-img-div {
+            display:table-cell;
+            vertical-align:middle;
+        }
+
+        .product-img {
+            max-width:180px;
+            max-height:180px;
+        }
+
     </style>
 
 
@@ -48,15 +68,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="page-title">
-                        <h1 style="font-size: 200%">DAILY AUCTION</h1>
-                        <p style="font-size: 150%; margin-top: 5px;">
-                            DAILY AUCTION 설명
-                        </p>
+                        <h1 style="font-size: 200%">SAFEWAY AUTO</h1>
+                        <p style="font-size: 150%; margin-top: 5px;">AJ International Traders is an export oriented
+                            company of used vehicles and auto parts. </p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
                         <li class="breadcrumb-item active">SERVICES</li>
                         <li class="breadcrumb-item active">DAILY AUCTION</li>
                     </ol>
@@ -69,67 +88,68 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <div class="row mb-3" id="title-space">
+                    <div class="row mb-3">
                         <br/>
-
                     </div>
-                    <h1> 1️⃣ hey dealer</h1>
-                    <img class="img-fluid"
-                         th:src="@{https://heydealer-web-static.s3.ap-northeast-2.amazonaws.com/heydealer-meta-image-v2.png}"/>
-                    <!--이미지 출처 : https://www.heydealer.com/-->
+                    <h1>01. Hey dealer</h1>
                     <br>
-                    <br>
+                    <div class="row mb-3" >
+                        <div class="col">
+                            <img class="img-fluid" style="width: 400px" th:src="@{https://heydealer-web-static.s3.ap-northeast-2.amazonaws.com/heydealer-meta-image-v2.png}"/>
+                            <!--이미지 출처 : https://www.heydealer.com/-->
+                        </div>
+                    </div>
                     <div class="row" id="text-space">
-                        구매 방법 설명란 ㅇㅇ
+                        <a  th:href="@{https://www.heydealer.com/}">
+                            <h5 style="color: #0b5ed7">Go to Hey dealer!</h5>
+                        </a>
                     </div>
-                    <br/>
                     <br/>
                     <br/>
                     <hr/>
                     <br/>
-                    <br/>
-                    <h1>2️⃣ Auto plus</h1>
-                    <img class="img-fluid" th:src="@{https://cdn.autoplus.co.kr/adminimage/autoplus_thum.png}"/>
-                    <!--이미지 출처 : https://www.autoplus.co.kr/WUHM010001.rb-->
-                    <br>
-                    <br>
-                    <div class="row" id="text-space">
-                        구매 방법 설명란
+                    <h1>02. Auto plus</h1>
+                    <div class="row mb-3" >
+                        <div class="col">
+                            <img class="img-fluid" style="width: 400px" th:src="@{https://cdn.autoplus.co.kr/adminimage/autoplus_thum.png}"/>
+                            <!--이미지 출처 : https://www.heydealer.com/-->
+                        </div>
                     </div>
-
+                    <div class="row" id="text-space">
+                        <a th:href="@{https://www.autoplus.co.kr/WUHM010001.rb}">
+                            <h5 style="color: #0b5ed7">Go to Auto plus!</h5>
+                        </a>
+                    </div>
                 </div>
-
 
                 <div class="col-lg-3 order-lg-first mt-4 pt-2 mt-lg-0 pt-lg-0 side_left">
                     <div class="sidebar">
                         <div class="widget">
                             <h5 class="widget_title">SERVICES</h5>
                             <div class="tags" style="display:grid">
-                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
-                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
-                                <!--                                    COMPANY PROFILE-->
-                                <!--                                </a>-->
-                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
-                                <!--                                    BUSINESS-->
-                                <!--                                </a>-->
-                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
-                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
+                                <a th:classappend="${category == 'DAILY_ACTION' ? 'active' : ''}"
                                    th:href="@{/daily-auction}">
                                     DAILY AUCTION
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'WEEKLY_AUTION' ? 'active' : ''}"
                                    th:href="@{/weekly-auction}">
                                     WEEKLY AUCTION
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'DEALERSHIPS' ? 'active' : ''}"
                                    th:href="@{/dealerships}">
                                     DEALERSHIPS
                                 </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}"
+                                <a th:classappend="${category == 'STOCKS' ? 'active' : ''}"
                                    th:href="@{/stocks}">
                                     STOCKS
+                                </a>
+                                <a th:classappend="${category == 'GOVERNMENT_TENDER' ? 'active' : ''}"
+                                   th:href="@{/government-tender}">
+                                    GOVERNMENT TENDER
+                                </a>
+                                <a th:classappend="${category == 'PRECONDITIONING' ? 'active' : ''}"
+                                   th:href="@{/preconditioning}">
+                                    PRECONDITIONING
                                 </a>
                                 <script>
                                     $(document).ready(function () {

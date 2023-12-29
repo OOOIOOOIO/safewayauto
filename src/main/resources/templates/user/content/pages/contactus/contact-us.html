@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{user/layout/default_layout}" lang="ko">
@@ -40,6 +42,193 @@
                 width: 100%;
             }
         }
+
+
+        /**************************************** contact us ì‹œìž‘ */
+
+        .contact_container {
+            display: flex;
+            margin-top: 30px;
+            width: 100%;
+            border: 4px solid #e6e6e6;
+            padding: 45px 70px;
+            gap: 40px;
+        }
+
+        .contact_wrap {
+            width: 80%;
+            display: flex;
+            gap: 80px;
+        }
+
+        .contact_con_wrap {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .contact_con {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact_con_title {
+            font-size: 1.063em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact_con_cap {
+            font-size: 1.03em;
+            font-weight: 300;
+        }
+
+        .sns_wrap {
+            padding-left: 20px;
+            border-left: 1px solid #e6e6e6;
+        }
+
+        .sns_wrap ul {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sns_wrap ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sns_wrap ul li a:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 43px;
+            height: 43px;
+            background-color: #0e1632;
+            border-radius: 100%;
+            transition: 0.4s;
+        }
+
+        .sns_wrap ul li a:last-child {
+            color: #0e1632;
+            font-size: 1.063em;
+            font-weight: 500;
+            transition: 0.4s;
+        }
+
+        .sns_wrap ul li:hover a:first-child {
+            background-color: #d9531e;
+        }
+
+        .sns_wrap ul li:hover a:last-child {
+            color: #d9531e;
+        }
+
+        /**************************************** contact us  */
+
+
+        @media screen and (max-width: 1240px) {
+
+
+            /**************************************** contact */
+
+            .contact_wrap{
+                gap: 40px;
+            }
+
+            .contact_container{
+                padding: 30px;
+                gap: 60px;
+            }
+
+        }
+
+
+        @media screen and (max-width: 1024px) {
+
+            /**************************************** contact */
+
+            .contact_container {
+                padding: 30px 20px;
+                gap: 40px;
+            }
+
+            .sns_wrap{
+                padding-left: 50px;
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+
+
+
+            /**************************************** contact */
+
+            .contact_container {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 40px;
+            }
+
+            .contact_wrap {
+                gap: 0;
+                justify-content: space-between;
+            }
+
+            .sns_wrap {
+                display: flex;
+                justify-content: center;
+                padding-left: 0px;
+                border-left: 0;
+            }
+
+            .sns_wrap ul{
+                flex-direction: row;
+            }
+
+        }
+
+        @media screen and (max-width: 540px) {
+
+
+            /**************************************** contact */
+
+            .contact_wrap{
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .sns_wrap ul{
+                gap: 10px;
+            }
+
+            .sns_wrap ul li a:first-child{
+                width: 24px;
+                height: 24px;
+            }
+
+            .sns_wrap ul li a:first-child img{
+                width: 50%;
+            }
+
+            .sns_wrap ul li a:first-child img.facebook{
+                width: 30%;
+            }
+
+            .contact_con_wrap{
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .contact_con_title{
+                margin-bottom: 10px;
+            }
+
+        }
     </style>
 
 
@@ -55,9 +244,8 @@
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb justify-content-md-end">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">ABOUT US</li>
-                        <li class="breadcrumb-item active">COMPANY PROFILE</li>
+                        <li class="breadcrumb-item"><a href="/">HOME</a></li>
+                        <li class="breadcrumb-item active">CONTACT US</li>
                     </ol>
                 </div>
             </div>
@@ -68,48 +256,139 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <div class="row mb-3" id="blank-space">
-                        <br/>
-
-                    </div>
                     <div class="row">
+                        <h1>SAFEWAY AUTO LOCATION</h1>
                     </div>
-                    <div class="row" id="text-space">
-                        AJ International Traders is an export oriented company of used vehicles and auto parts. We are
-                        offering car purchase solution to used car exporters and customers around the globe to buy cars
-                        at ease.
-                        <br/>
+                    <br>
+                    <div class="row">
+                        <div id="map" style="height: 600px;">
+                            <script>
+                                window.initMap = function () {
+                                    const map = new google.maps.Map(document.getElementById("map"), {
+                                        center: { lat: 37.458320, lng: 126.612652 },
+                                        zoom: 15
+                                    });
 
-                        <br/>
-                        Since our establishment in 2010, our business has been experiencing 100% sales growth each year.
-                        In 2012, we were proud to be a recipient of President Award for exporting 10 million dollars
-                        worth goods overseas. In 2015, we have exported 2500 units to 21 countries with $20 million
-                        dollars sales revenue.
-                        <br/>
+                                    const malls = [
+                                        { label: "SAFEWAY AUTO", name: "SAFEWAY AUTO", lat: 37.458320, lng: 126.612652 }
+                                    ];
 
-                        <br/>
-                        Along with AJ Rentacar and AJ Sellcar, AJ International Traders is a subsidiary company of AJ
-                        Family Corporation. For your guidance, AJ Rentacar is one of leading rentacar business in Korea
-                        with 632 billion dollars sales revenue in 2015. AJ Sellcar owns the biggest auto auction in
-                        Korea and has purchasing departments across Korea. Therefore, we are able to source big volumes
-                        of rent cars and personal cars that have undergone proper maintenance and strict inspection
-                        through our networks.
-                        <br/>
-                        <br/>
-                        The advantage of doing business with AJ International Traders is that we offer 100% transparent
-                        accident history for all of our vehicles at domestic market price. Through our “Auction”
-                        service, we encourage overseas buyers to find their favorite vehicles and to participate in
-                        bidding with their desired price. Also, we offer “All Inclusive Concierge Service” where we
-                        assist buyers step by step from helping buyers to find their favorite vehicles and to deliver
-                        their vehicles to their designated countries.
-                        <br/>
-                        <br/>
-                        Under our slogan “What You See is What You Get”, we are endlessly pursuing R&D to make 100%
-                        transparent transaction with overseas buyers and to build stronger trust between both parties
-                        for our mutual benefits.
-                        <br/>
-                        <br/>
+
+                                    malls.forEach(({ label, name, lat, lng }) => {
+                                        const marker = new google.maps.Marker({
+                                            position: { lat, lng },
+                                            label,
+                                            map
+                                        });
+                                    });
+
+                                };
+
+
+                            </script>
+                        </div>
                     </div>
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="row" >
+                        <div class="contact_container">
+                            <div class="contact_wrap">
+                                <ul class="contact_con_wrap">
+                                    <li class="contact_con">
+<!--                                        <div>-->
+<!--                                            <img th:src="@{/user/assets/image/contact_icon01.png}" alt="">-->
+<!--                                        </div>-->
+                                        <div>
+                                            <p class="contact_con_title">
+                                                ● ADDRESS
+                                            </p>
+                                            <p class="contact_con_cap">
+                                                36-5 HANGDONG 7GA JUNGGU INCHEON REPUBLIC OF KOREA<br>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="contact_con">
+<!--                                        <div>-->
+<!--                                            <img th:src="@{/user/assets/image/contact_icon02.png}" alt="">-->
+<!--                                        </div>-->
+                                        <div>
+                                            <p class="call">
+                                                <b>● E-Mail</b>&nbsp;&nbsp;
+                                            </p>
+                                            <a href="mailto:safewayauto8@gamil.com" target="_blank">
+                                                <p class="contact_con_cap">
+                                                    SAFEWAYAUTO8@gmail.com
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="contact_con_wrap">
+                                    <li class="contact_con">
+<!--                                        <div>-->
+<!--                                            <img th:src="@{/user/assets/image/contact_icon03.png}" alt="">-->
+<!--                                        </div>-->
+                                        <div style="width: 200px; height: 100%">
+                                            <p class="contact_con_title" >
+                                                ● Open Hours(KST)
+                                            </p>
+                                            <p class="contact_con_cap">
+                                                MON ~ FRI : 9AM - 6PM
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="contact_con">
+                                        <div>
+                                            <p class="contact_con_title" >
+                                                <b>● WhatsApp</b>&nbsp;&nbsp;
+                                            </p>
+                                            <a href="https://api.whatsapp.com/send?phone=+821056064068&text=Hi" target="_blank">
+                                                <p class="contact_con_cap">
+                                                    Contact us via WhatsApp!<br>
+                                                    Click Here!
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="sns_wrap">
+
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/SAFEWAYAUTO1/" target="_blank">
+                                            <img class="facebook" th:src="@{/user/assets/image/contact_sns01.png}" alt="facebook">
+                                        </a>
+                                        <a href="https://www.facebook.com/SAFEWAYAUTO1/" target="_blank">
+                                            Facebook
+                                        </a>
+                                    </li>
+<!--                                    <li>-->
+<!--                                        <a href="https://www.youtube.com/seobuk" target="_blank">-->
+<!--                                            <img th:src="@{/user/assets/image/contact_sns02.png}" alt="youtube">-->
+<!--                                        </a>-->
+<!--                                        <a href="https://www.youtube.com/seobuk" target="_blank">-->
+<!--                                            Youtube-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+                                    <li>
+                                        <a href="https://www.instagram.com/yj_jchoi/" target="_blank">
+                                            <img th:src="@{/user/assets/image/contact_sns03.png}" alt="instagram">
+                                        </a>
+                                        <a href="https://www.instagram.com/yj_jchoi/" target="_blank">
+                                            Instagram
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -118,22 +397,8 @@
                         <div class="widget">
                             <h5 class="widget_title">ABOUT US</h5>
                             <div class="tags" style="display:grid">
-                                <!--                                &lt;!&ndash;								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타&ndash;&gt;-->
-                                <!--                                <a th:classappend="${category == '전체' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '전체'; searchFeed();">-->
-                                <!--                                    COMPANY PROFILE-->
-                                <!--                                </a>-->
-                                <!--                                <a th:classappend="${category == '편집샵 스토리' ? 'active' : ''}"-->
-                                <!--                                   onclick="window.feedSearchOption.category = '편집샵 스토리'; searchFeed();">-->
-                                <!--                                    BUSINESS-->
-                                <!--                                </a>-->
-                                <!--								편집샵 스토리, 패션, 레코즈, 소품, 리빙, 기타-->
-                                <a th:classappend="${category == 'COMPANY PROFILE' ? 'active' : ''}"
-                                   th:href="@{/company-profile}">
-                                    COMPANY PROFILE
-                                </a>
-                                <a th:classappend="${category == 'BUSINESS' ? 'active' : ''}" th:href="@{/business}">
-                                    BUSINESS
+                                <a th:classappend="${category == 'CONTACT_US' ? 'active' : ''}" th:href="@{/contact-us}">
+                                    CONTACT US
                                 </a>
                                 <script>
                                     $(document).ready(function () {
