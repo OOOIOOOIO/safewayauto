@@ -11,8 +11,8 @@
             text-overflow: ellipsis;
         }
         /*.carousel-inner {*/
-        /*    width: auto;*/
-        /*    height: 1000px; !* 이미지 높이 변경 *!*/
+        /*    !*width: auto;*!*/
+        /*     max-height: 1000px; !* 이미지 높이 변경 *!*/
         /*}*/
         /*.carousel-item background_bg{*/
 
@@ -21,7 +21,7 @@
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel" data-bs-interval="2000">
         <div class="carousel-inner">
             <!--/*@thymesVar id="bannerFeed" type="com.sch.shift3.user.entity.ContentFeed"*/-->
-            <div style="background-size: 90% 100%; background-repeat: no-repeat; object-fit: contain" class="carousel-item background_bg" th:classappend="${bannerStat.index == 0 ? 'active' : ''}"
+            <div style="background-size: 100% 100%; background-repeat: no-repeat; object-fit: contain" class="carousel-item background_bg" th:classappend="${bannerStat.index == 0 ? 'active' : ''}"
                  th:data-img-src="${banner.thumbnailFileName}"
                  th:each="banner : ${bannerList}">
                 <div class="banner_slide_content banner_content_inner">

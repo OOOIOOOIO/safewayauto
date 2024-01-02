@@ -17,8 +17,8 @@ public class BannerService {
         List<BannerDto> bannerFeed = new ArrayList<>();
 
         String[] imgArr = new String[]{
-                "/user/assets/image/banner_1.jpeg",
-                "/user/assets/image/banner_2.jpeg"
+                "/user/assets/image/banner_11.jpeg",
+                "/user/assets/image/banner_12.jpeg"
         };
 
         for(int i = 0; i < imgArr.length; i++){
